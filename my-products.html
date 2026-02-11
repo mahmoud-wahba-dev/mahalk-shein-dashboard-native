@@ -19,7 +19,7 @@
 </head>
 
 <body
-  x-data="{ page: 'ecommerce', 'loaded': true, 'darkMode': false, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false, storeStates: { aliexpress: true, shein: false, salla: true, zid: false } }"
+  x-data="{ page: 'my-products', 'loaded': true, 'darkMode': false, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false, storeStates: { aliexpress: true, shein: false, salla: true, zid: false } }"
   x-init="
          darkMode = JSON.parse(localStorage.getItem('darkMode'));
          $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
@@ -35,7 +35,7 @@
   <!-- ===== Page Wrapper Start ===== -->
   <div class="flex h-screen overflow-hidden">
     <!-- ===== Sidebar Start ===== -->
-   <aside :class="sidebarToggle ? 'translate-x-0 lg:w-[90px] mini-sidebar px-5 lg:px-0' : '-translate-x-full px-5'"
+ <aside :class="sidebarToggle ? 'translate-x-0 lg:w-[90px] mini-sidebar px-5 lg:px-0' : '-translate-x-full px-5'"
       class="sidebar fixed transition-all left-0 top-0 z-9999 flex h-screen w-[290px] flex-col overflow-y-hidden border-r border-gray-200 bg-white dark:border-gray-800 dark:bg-black lg:static lg:translate-x-0">
       <!-- SIDEBAR HEADER -->
       <div :class="sidebarToggle ? 'justify-center' : 'justify-between'"
@@ -113,11 +113,11 @@
 
               <!-- Menu Item Calendar -->
               <li>
-                <a href="calendar.html" @click="selected = (selected === 'Calendar' ? '':'Calendar')"
+                <a href="index.html" @click="selected = (selected === 'Dashboard' ? '':'Dashboard')"
                   class="menu-item group"
-                  :class=" (selected === 'Calendar') && (page === 'calendar') ? 'menu-item-active' : 'menu-item-inactive'">
+                  :class=" (selected === 'Dashboard') || (page === 'ecommerce') ? 'menu-item-active' : 'menu-item-inactive'">
                   <span class="material-symbols-outlined size-6"
-                    :class="(selected === 'Calendar') && (page === 'calendar') ? 'menu-item-icon-active' : 'menu-item-icon-inactive'">calendar_today</span>
+                    :class="(selected === 'Dashboard') || (page === 'ecommerce') ? 'menu-item-icon-active' : 'menu-item-icon-inactive'">dashboard</span>
 
                   <span class="menu-item-text" :class="sidebarToggle ? 'lg:hidden' : ''">
                     اللوحة الرئيسية
@@ -130,10 +130,10 @@
               <li>
                 <a href="my-products.html" @click="selected = (selected === 'MyProducts' ? '':'MyProducts')"
                   class="menu-item group"
-                  :class=" (selected === 'MyProducts') && (page === 'my-products') ? 'menu-item-active' : 'menu-item-inactive'">
+                  :class=" (selected === 'MyProducts') || (page === 'my-products') ? 'menu-item-active' : 'menu-item-inactive'">
 
                   <span class="material-symbols-outlined size-6"
-                    :class="(selected === 'MyProducts') && (page === 'my-products') ?  'menu-item-icon-active'  :'menu-item-icon-inactive'">inventory_2</span>
+                    :class="(selected === 'MyProducts') || (page === 'my-products') ?  'menu-item-icon-active'  :'menu-item-icon-inactive'">inventory_2</span>
 
                   <span class="menu-item-text" :class="sidebarToggle ? 'lg:hidden' : ''">
                     منتجاتي
@@ -145,22 +145,22 @@
               <li>
                 <a href="digital-products.html" @click="selected = (selected === 'DigitalProducts' ? '':'DigitalProducts')"
                   class="menu-item group"
-                  :class=" (selected === 'DigitalProducts') || (page === 'ecommerce') ? 'menu-item-active' : 'menu-item-inactive'">
+                  :class=" (selected === 'DigitalProducts') || (page === 'digital-products') ? 'menu-item-active' : 'menu-item-inactive'">
 
                   <span class="material-symbols-outlined size-6"
-                  :class="(selected === 'DigitalProducts') || (page === 'ecommerce') ?  'menu-item-icon-active'  :'menu-item-icon-inactive'">laptop_mac</span>
+                  :class="(selected === 'DigitalProducts') || (page === 'digital-products') ?  'menu-item-icon-active'  :'menu-item-icon-inactive'">laptop_mac</span>
                   <span class="menu-item-text" :class="sidebarToggle ? 'lg:hidden' : ''">
                     منتجات رقمية
                   </span>
                 </a>
               </li>
               <li>
-                <a href="add-trendyol.html" @click="selected = (selected === 'AddTrendyol' ? '':'AddTrendyol')"
+                <a href="add-shein-product.html" @click="selected = (selected === 'AddTrendyol' ? '':'AddTrendyol')"
                   class="menu-item group"
-                  :class=" (selected === 'AddTrendyol') && (page === 'add-trendyol') ? 'menu-item-active' : 'menu-item-inactive'">
+                  :class=" (selected === 'AddTrendyol') || (page === 'add-trendyol') ? 'menu-item-active' : 'menu-item-inactive'">
 
                   <span class="material-symbols-outlined size-6"
-                  :class="(selected === 'AddTrendyol') && (page === 'add-trendyol') ?  'menu-item-icon-active'  :'menu-item-icon-inactive'">add_business</span>
+                  :class="(selected === 'AddTrendyol') || (page === 'add-trendyol') ?  'menu-item-icon-active'  :'menu-item-icon-inactive'">add_business</span>
                   <span class="menu-item-text"
                     :class="sidebarToggle ? 'lg:hidden' : ''">
                     إضافة منتج ترينديول
@@ -170,22 +170,22 @@
               <li>
                 <a href="add-shein-product.html" @click="selected = (selected === 'AddShein' ? '':'AddShein')"
                   class="menu-item group"
-                  :class=" (selected === 'AddShein') && (page === 'add-shein') ? 'menu-item-active' : 'menu-item-inactive'">
+                  :class=" (selected === 'AddShein') || (page === 'add-shein') ? 'menu-item-active' : 'menu-item-inactive'">
 
                   <span class="material-symbols-outlined size-6"
-                  :class="(selected === 'AddShein') && (page === 'add-shein') ?  'menu-item-icon-active'  :'menu-item-icon-inactive'">apparel</span>
+                  :class="(selected === 'AddShein') || (page === 'add-shein') ?  'menu-item-icon-active'  :'menu-item-icon-inactive'">apparel</span>
                   <span class="menu-item-text" :class="sidebarToggle ? 'lg:hidden' : ''">
                     إضافة منتج شي إن
                   </span>
                 </a>
               </li>
               <li>
-                <a href="add-namshi.html" @click="selected = (selected === 'AddNamshi' ? '':'AddNamshi')"
+                <a href="add-shein-product.html" @click="selected = (selected === 'AddNamshi' ? '':'AddNamshi')"
                   class="menu-item group"
-                  :class=" (selected === 'AddNamshi') && (page === 'add-namshi') ? 'menu-item-active' : 'menu-item-inactive'">
+                  :class=" (selected === 'AddNamshi') || (page === 'add-namshi') ? 'menu-item-active' : 'menu-item-inactive'">
 
                   <span class="material-symbols-outlined size-6"
-                  :class="(selected === 'AddNamshi') && (page === 'add-namshi') ?  'menu-item-icon-active'  :'menu-item-icon-inactive'">post_add</span>
+                  :class="(selected === 'AddNamshi') || (page === 'add-namshi') ?  'menu-item-icon-active'  :'menu-item-icon-inactive'">post_add</span>
                   <span class="menu-item-text" :class="sidebarToggle ? 'lg:hidden' : ''">
                     إضافة منتج نمشي
                   </span>
@@ -194,20 +194,20 @@
               <li>
                 <a href="orders.html" @click="selected = (selected === 'Orders' ? '':'Orders')"
                   class="menu-item group"
-                  :class=" (selected === 'Orders') && (page === 'orders') ? 'menu-item-active' : 'menu-item-inactive'">
+                  :class=" (selected === 'Orders') || (page === 'orders') ? 'menu-item-active' : 'menu-item-inactive'">
                   <span class="material-symbols-outlined size-6"
-                  :class="(selected === 'Orders') && (page === 'orders') ?  'menu-item-icon-active'  :'menu-item-icon-inactive'">shopping_bag</span>
+                  :class="(selected === 'Orders') || (page === 'orders') ?  'menu-item-icon-active'  :'menu-item-icon-inactive'">shopping_bag</span>
                   <span class="menu-item-text" :class="sidebarToggle ? 'lg:hidden' : ''">
                     الطلبات
                   </span>
                 </a>
               </li>
               <li>
-                <a href="track-orders.html" @click="selected = (selected === 'TrackOrders' ? '':'TrackOrders')"
+                <a href="orders.html" @click="selected = (selected === 'TrackOrders' ? '':'TrackOrders')"
                   class="menu-item group"
-                  :class=" (selected === 'TrackOrders') && (page === 'track-orders') ? 'menu-item-active' : 'menu-item-inactive'">
+                  :class=" (selected === 'TrackOrders') || (page === 'track-orders') ? 'menu-item-active' : 'menu-item-inactive'">
                   <span class="material-symbols-outlined size-6"
-                  :class="(selected === 'TrackOrders') && (page === 'track-orders') ?  'menu-item-icon-active'  :'menu-item-icon-inactive'">local_shipping</span>
+                  :class="(selected === 'TrackOrders') || (page === 'track-orders') ?  'menu-item-icon-active'  :'menu-item-icon-inactive'">local_shipping</span>
                   <span class="menu-item-text" :class="sidebarToggle ? 'lg:hidden' : ''">
                     تتبع الطلبات
                   </span>
@@ -263,10 +263,10 @@
               <li>
                 <a href="integrations.html" @click="selected = (selected === 'Integrations' ? '':'Integrations')"
                   class="menu-item group"
-                  :class=" (selected === 'Integrations') && (page === 'integrations') ? 'menu-item-active' : 'menu-item-inactive'">
+                  :class=" (selected === 'Integrations') || (page === 'integrations') ? 'menu-item-active' : 'menu-item-inactive'">
 
                   <span class="material-symbols-outlined size-6"
-                  :class="(selected === 'Integrations') && (page === 'integrations') ? 'menu-item-icon-active' : 'menu-item-icon-inactive'">hub</span>
+                  :class="(selected === 'Integrations') || (page === 'integrations') ? 'menu-item-icon-active' : 'menu-item-icon-inactive'">hub</span>
                   <span class="menu-item-text" :class="sidebarToggle ? 'lg:hidden' : ''">
                     قنوات التكامل
                   </span>
@@ -277,9 +277,9 @@
               <li>
                 <a href="micro-service.html" @click="selected = (selected === 'MicroServices' ? '':'MicroServices')"
                   class="menu-item group"
-                  :class=" (selected === 'MicroServices') && (page === 'microservices') ? 'menu-item-active' : 'menu-item-inactive'">
+                  :class=" (selected === 'MicroServices') || (page === 'microservices') ? 'menu-item-active' : 'menu-item-inactive'">
                   <span class="material-symbols-outlined size-6"
-                  :class="(selected === 'MicroServices') && (page === 'microservices') ? 'menu-item-icon-active' : 'menu-item-icon-inactive'">extension</span>
+                  :class="(selected === 'MicroServices') || (page === 'microservices') ? 'menu-item-icon-active' : 'menu-item-icon-inactive'">extension</span>
                   <span class="menu-item-text" :class="sidebarToggle ? 'lg:hidden' : ''">
                     خدمات مصغرة
                   </span>
@@ -289,10 +289,10 @@
               <li>
                 <a href="support.html" @click="selected = (selected === 'Support' ? '':'Support')"
                   class="menu-item group"
-                  :class=" (selected === 'Support') && (page === 'support') ? 'menu-item-active' : 'menu-item-inactive'">
+                  :class=" (selected === 'Support') || (page === 'support') ? 'menu-item-active' : 'menu-item-inactive'">
 
                   <span class="material-symbols-outlined size-6"
-                  :class="(selected === 'Support') && (page === 'support') ?  'menu-item-icon-active'  :'menu-item-icon-inactive'">help</span>
+                  :class="(selected === 'Support') || (page === 'support') ?  'menu-item-icon-active'  :'menu-item-icon-inactive'">help</span>
                   <span class="menu-item-text" :class="sidebarToggle ? 'lg:hidden' : ''">
                     المساعدة والدعم </span>
                 </a>
@@ -300,10 +300,10 @@
               <li>
                 <a href="tutorials.html" @click="selected = (selected === 'Tutorials' ? '':'Tutorials')"
                   class="menu-item group"
-                  :class=" (selected === 'Tutorials') && (page === 'tutorials') ? 'menu-item-active' : 'menu-item-inactive'">
+                  :class=" (selected === 'Tutorials') || (page === 'tutorials') ? 'menu-item-active' : 'menu-item-inactive'">
 
                   <span class="material-symbols-outlined size-6"
-                  :class="(selected === 'Tutorials') && (page === 'tutorials') ?  'menu-item-icon-active'  :'menu-item-icon-inactive'">school</span>
+                  :class="(selected === 'Tutorials') || (page === 'tutorials') ?  'menu-item-icon-active'  :'menu-item-icon-inactive'">school</span>
                   <span class="menu-item-text" :class="sidebarToggle ? 'lg:hidden' : ''">
                     شروحات المنصة
                   </span>
@@ -333,10 +333,9 @@
               <li>
                 <a href="pricing.html" @click="selected = (selected === 'Subscription' ? '':'Subscription')"
                   class="menu-item group"
-                  :class=" (selected === 'Subscription') && (page === 'pricing') ? 'menu-item-active' : 'menu-item-inactive'">
-
+                  :class=" (selected === 'Subscription') || (page === 'pricing') ? 'menu-item-active' : 'menu-item-inactive'">
                   <span class="material-symbols-outlined size-6"
-                  :class="(selected === 'Subscription') && (page === 'pricing') ?  'menu-item-icon-active'  :'menu-item-icon-inactive'">card_membership</span>
+                  :class="(selected === 'Subscription') || (page === 'pricing') ?  'menu-item-icon-active'  :'menu-item-icon-inactive'">card_membership</span>
                   <span class="menu-item-text" :class="sidebarToggle ? 'lg:hidden' : ''">
                     الاشتراك
                   </span>
@@ -414,8 +413,8 @@
             <!-- Hamburger Toggle BTN -->
 
             <a href="index.html" class="lg:hidden">
-              <img class="dark:hidden" src="./src/images/logo/logo.svg" alt="Logo" />
-              <img class="hidden dark:block" src="./src/images/logo/logo-dark.svg" alt="Logo" />
+              <img class="dark:hidden max-w-[154px] max-h-[32px] " src="./src/imgs/mahlak-shein-logo.png" alt="Logo" />
+              <img class="hidden dark:block" src="./src/imgs/logo-dark-removebg-preview.png" alt="Logo" />
             </a>
 
             <!-- Application nav menu button -->
