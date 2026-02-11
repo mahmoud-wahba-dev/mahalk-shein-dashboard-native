@@ -35,8 +35,8 @@
   <!-- ===== Page Wrapper Start ===== -->
   <div class="flex h-screen overflow-hidden">
     <!-- ===== Sidebar Start ===== -->
-    <aside :class="sidebarToggle ? 'translate-x-0 lg:w-[90px]' : '-translate-x-full'"
-      class="sidebar fixed transition-all left-0 top-0 z-9999 flex h-screen w-[290px] flex-col overflow-y-hidden border-r border-gray-200 bg-white px-5 dark:border-gray-800 dark:bg-black lg:static lg:translate-x-0">
+    <aside :class="sidebarToggle ? 'translate-x-0 lg:w-[90px] mini-sidebar px-5 lg:px-0' : '-translate-x-full px-5'"
+      class="sidebar fixed transition-all left-0 top-0 z-9999 flex h-screen w-[290px] flex-col overflow-y-hidden border-r border-gray-200 bg-white dark:border-gray-800 dark:bg-black lg:static lg:translate-x-0">
       <!-- SIDEBAR HEADER -->
       <div :class="sidebarToggle ? 'justify-center' : 'justify-between'"
         class="flex items-center gap-2 pt-8 sidebar-header pb-0">
@@ -116,13 +116,8 @@
                 <a href="calendar.html" @click="selected = (selected === 'Calendar' ? '':'Calendar')"
                   class="menu-item group"
                   :class=" (selected === 'Calendar') && (page === 'calendar') ? 'menu-item-active' : 'menu-item-inactive'">
-                  <svg
-                    :class="(selected === 'Calendar') && (page === 'calendar') ? 'menu-item-icon-active'  :'menu-item-icon-inactive'"
-                    width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd"
-                      d="M8 2C8.41421 2 8.75 2.33579 8.75 2.75V3.75H15.25V2.75C15.25 2.33579 15.5858 2 16 2C16.4142 2 16.75 2.33579 16.75 2.75V3.75H18.5C19.7426 3.75 20.75 4.75736 20.75 6V9V19C20.75 20.2426 19.7426 21.25 18.5 21.25H5.5C4.25736 21.25 3.25 20.2426 3.25 19V9V6C3.25 4.75736 4.25736 3.75 5.5 3.75H7.25V2.75C7.25 2.33579 7.58579 2 8 2ZM8 5.25H5.5C5.08579 5.25 4.75 5.58579 4.75 6V8.25H19.25V6C19.25 5.58579 18.9142 5.25 18.5 5.25H16H8ZM19.25 9.75H4.75V19C4.75 19.4142 5.08579 19.75 5.5 19.75H18.5C18.9142 19.75 19.25 19.4142 19.25 19V9.75Z"
-                      fill="" />
-                  </svg>
+                  <span class="material-symbols-outlined size-6"
+                    :class="(selected === 'Calendar') && (page === 'calendar') ? 'menu-item-icon-active' : 'menu-item-icon-inactive'">calendar_today</span>
 
                   <span class="menu-item-text" :class="sidebarToggle ? 'lg:hidden' : ''">
                     اللوحة الرئيسية
@@ -131,92 +126,92 @@
               </li>
               <!-- Menu Item Calendar -->
 
-              <!-- Menu Item Profile -->
+              <!-- Menu Item My Products -->
               <li>
-                <a href="profile.html" @click="selected = (selected === 'Profile' ? '':'Profile')"
+                <a href="my-products.html" @click="selected = (selected === 'MyProducts' ? '':'MyProducts')"
                   class="menu-item group"
-                  :class=" (selected === 'Profile') && (page === 'profile') ? 'menu-item-active' : 'menu-item-inactive'">
+                  :class=" (selected === 'MyProducts') && (page === 'my-products') ? 'menu-item-active' : 'menu-item-inactive'">
 
-                  <span class="icon-[streamline-ultimate--products-gifts] size-6"
-                    :class="(selected === 'Profile') && (page === 'profile') ?  'menu-item-icon-active'  :'menu-item-icon-inactive'"></span>
+                  <span class="material-symbols-outlined size-6"
+                    :class="(selected === 'MyProducts') && (page === 'my-products') ?  'menu-item-icon-active'  :'menu-item-icon-inactive'">inventory_2</span>
 
                   <span class="menu-item-text" :class="sidebarToggle ? 'lg:hidden' : ''">
                     منتجاتي
                   </span>
                 </a>
               </li>
-              <!-- Menu Item Profile -->
+              <!-- Menu Item My Products -->
 
               <li>
-                <a href="profile.html" @click="selected = (selected === 'Profile' ? '':'Profile')"
+                <a href="digital-products.html" @click="selected = (selected === 'DigitalProducts' ? '':'DigitalProducts')"
                   class="menu-item group"
-                  :class=" (selected === 'Profile') && (page === 'profile') ? 'menu-item-active' : 'menu-item-inactive'">
+                  :class=" (selected === 'DigitalProducts') || (page === 'ecommerce') ? 'menu-item-active' : 'menu-item-inactive'">
 
-
-                  <span class="icon-[streamline-freehand--product-launch-laptop] size-6"></span>
+                  <span class="material-symbols-outlined size-6"
+                  :class="(selected === 'DigitalProducts') || (page === 'ecommerce') ?  'menu-item-icon-active'  :'menu-item-icon-inactive'">laptop_mac</span>
                   <span class="menu-item-text" :class="sidebarToggle ? 'lg:hidden' : ''">
                     منتجات رقمية
                   </span>
                 </a>
               </li>
               <li>
-                <a href="profile.html" @click="selected = (selected === 'Profile' ? '':'Profile')"
+                <a href="add-trendyol.html" @click="selected = (selected === 'AddTrendyol' ? '':'AddTrendyol')"
                   class="menu-item group"
-                  :class=" (selected === 'Profile') && (page === 'profile') ? 'menu-item-active' : 'menu-item-inactive'">
+                  :class=" (selected === 'AddTrendyol') && (page === 'add-trendyol') ? 'menu-item-active' : 'menu-item-inactive'">
 
-                  <span class="icon-[fluent--production-24-regular] size-6"></span> <span class="menu-item-text"
+                  <span class="material-symbols-outlined size-6"
+                  :class="(selected === 'AddTrendyol') && (page === 'add-trendyol') ?  'menu-item-icon-active'  :'menu-item-icon-inactive'">add_business</span>
+                  <span class="menu-item-text"
                     :class="sidebarToggle ? 'lg:hidden' : ''">
                     إضافة منتج ترينديول
                   </span>
                 </a>
               </li>
               <li>
-                <a href="add-shein-product.html" @click="selected = (selected === 'AddSheinProduct' ? '':'AddSheinProduct')"
+                <a href="add-shein-product.html" @click="selected = (selected === 'AddShein' ? '':'AddShein')"
                   class="menu-item group"
-                  :class=" (selected === 'AddSheinProduct') || (page === 'add-shein-product') ? 'menu-item-active' : 'menu-item-inactive'">
+                  :class=" (selected === 'AddShein') && (page === 'add-shein') ? 'menu-item-active' : 'menu-item-inactive'">
 
-                  <svg class="fill-current" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M19 6H16C16 3.79 14.21 2 12 2C9.79 2 8 3.79 8 6H5C3.9 6 3 6.9 3 8V20C3 21.1 3.9 22 5 22H19C20.1 22 21 21.1 21 20V8C21 6.9 20.1 6 19 6ZM12 4C13.1 4 14 4.9 14 6H10C10 4.9 10.9 4 12 4ZM19 20H5V8H8V11C8 11.55 8.45 12 9 12C9.55 12 10 11.55 10 11V8H14V11C14 11.55 14.45 12 15 12C15.55 12 16 11.55 16 11V8H19V20Z" fill=""/>
-                  </svg>
+                  <span class="material-symbols-outlined size-6"
+                  :class="(selected === 'AddShein') && (page === 'add-shein') ?  'menu-item-icon-active'  :'menu-item-icon-inactive'">apparel</span>
                   <span class="menu-item-text" :class="sidebarToggle ? 'lg:hidden' : ''">
                     إضافة منتج شي إن
                   </span>
                 </a>
               </li>
               <li>
-                <a href="profile.html" @click="selected = (selected === 'Profile' ? '':'Profile')"
+                <a href="add-namshi.html" @click="selected = (selected === 'AddNamshi' ? '':'AddNamshi')"
                   class="menu-item group"
-                  :class=" (selected === 'Profile') && (page === 'profile') ? 'menu-item-active' : 'menu-item-inactive'">
+                  :class=" (selected === 'AddNamshi') && (page === 'add-namshi') ? 'menu-item-active' : 'menu-item-inactive'">
 
-                  <span class="icon-[material-symbols--add-ad-outline] size-6"></span>
+                  <span class="material-symbols-outlined size-6"
+                  :class="(selected === 'AddNamshi') && (page === 'add-namshi') ?  'menu-item-icon-active'  :'menu-item-icon-inactive'">post_add</span>
                   <span class="menu-item-text" :class="sidebarToggle ? 'lg:hidden' : ''">
                     إضافة منتج نمشي
                   </span>
                 </a>
               </li>
               <li>
-                <a href="profile.html" @click="selected = (selected === 'Profile' ? '':'Profile')"
+                <a href="orders.html" @click="selected = (selected === 'Orders' ? '':'Orders')"
                   class="menu-item group"
-                  :class=" (selected === 'Profile') && (page === 'profile') ? 'menu-item-active' : 'menu-item-inactive'">
-                  <span class="icon-[fluent-mdl2--activate-orders] size-6"></span>
+                  :class=" (selected === 'Orders') && (page === 'orders') ? 'menu-item-active' : 'menu-item-inactive'">
+                  <span class="material-symbols-outlined size-6"
+                  :class="(selected === 'Orders') && (page === 'orders') ?  'menu-item-icon-active'  :'menu-item-icon-inactive'">shopping_bag</span>
                   <span class="menu-item-text" :class="sidebarToggle ? 'lg:hidden' : ''">
                     الطلبات
                   </span>
                 </a>
               </li>
               <li>
-                <a href="profile.html" @click="selected = (selected === 'Profile' ? '':'Profile')"
+                <a href="track-orders.html" @click="selected = (selected === 'TrackOrders' ? '':'TrackOrders')"
                   class="menu-item group"
-                  :class=" (selected === 'Profile') && (page === 'profile') ? 'menu-item-active' : 'menu-item-inactive'">
-                  <span class="icon-[ri--chat-follow-up-fill] size-6"></span>
+                  :class=" (selected === 'TrackOrders') && (page === 'track-orders') ? 'menu-item-active' : 'menu-item-inactive'">
+                  <span class="material-symbols-outlined size-6"
+                  :class="(selected === 'TrackOrders') && (page === 'track-orders') ?  'menu-item-icon-active'  :'menu-item-icon-inactive'">local_shipping</span>
                   <span class="menu-item-text" :class="sidebarToggle ? 'lg:hidden' : ''">
                     تتبع الطلبات
                   </span>
 
-                  <span
-                    class="inline-flex items-center ms-auto justify-center gap-1 rounded-full bg-error-50 px-2.5 py-0.5 text-sm font-medium text-error-600 dark:bg-error-500/15 dark:text-error-500">
-                    جديد
-                  </span>
                 </a>
               </li>
 
@@ -266,26 +261,25 @@
             <ul class="flex flex-col gap-4 mb-6">
 
               <li>
-                <a href="profile.html" @click="selected = (selected === 'Profile' ? '':'Profile')"
+                <a href="integrations.html" @click="selected = (selected === 'Integrations' ? '':'Integrations')"
                   class="menu-item group"
-                  :class=" (selected === 'Profile') && (page === 'profile') ? 'menu-item-active' : 'menu-item-inactive'">
+                  :class=" (selected === 'Integrations') && (page === 'integrations') ? 'menu-item-active' : 'menu-item-inactive'">
 
-                  <span class="icon-[carbon--ibm-webmethods-integration-server] size-6"></span>
+                  <span class="material-symbols-outlined size-6"
+                  :class="(selected === 'Integrations') && (page === 'integrations') ? 'menu-item-icon-active' : 'menu-item-icon-inactive'">hub</span>
                   <span class="menu-item-text" :class="sidebarToggle ? 'lg:hidden' : ''">
                     قنوات التكامل
                   </span>
-                    <span
-                    class="inline-flex items-center ms-auto justify-center gap-1 rounded-full bg-error-50 px-2.5 py-0.5 text-sm font-medium text-error-600 dark:bg-error-500/15 dark:text-error-500">
-                    جديد
-                  </span>
+
                 </a>
               </li>
 
               <li>
-                <a href="profile.html" @click="selected = (selected === 'Profile' ? '':'Profile')"
+                <a href="micro-service.html" @click="selected = (selected === 'MicroServices' ? '':'MicroServices')"
                   class="menu-item group"
-                  :class=" (selected === 'Profile') && (page === 'profile') ? 'menu-item-active' : 'menu-item-inactive'">
-                  <span class="icon-[cib--micro-blog] size-6"></span>
+                  :class=" (selected === 'MicroServices') && (page === 'microservices') ? 'menu-item-active' : 'menu-item-inactive'">
+                  <span class="material-symbols-outlined size-6"
+                  :class="(selected === 'MicroServices') && (page === 'microservices') ? 'menu-item-icon-active' : 'menu-item-icon-inactive'">extension</span>
                   <span class="menu-item-text" :class="sidebarToggle ? 'lg:hidden' : ''">
                     خدمات مصغرة
                   </span>
@@ -293,21 +287,23 @@
               </li>
 
               <li>
-                <a href="profile.html" @click="selected = (selected === 'Profile' ? '':'Profile')"
+                <a href="support.html" @click="selected = (selected === 'Support' ? '':'Support')"
                   class="menu-item group"
-                  :class=" (selected === 'Profile') && (page === 'profile') ? 'menu-item-active' : 'menu-item-inactive'">
+                  :class=" (selected === 'Support') && (page === 'support') ? 'menu-item-active' : 'menu-item-inactive'">
 
-                  <span class="icon-[streamline-flex--customer-support-7-solid] size-6"></span>
+                  <span class="material-symbols-outlined size-6"
+                  :class="(selected === 'Support') && (page === 'support') ?  'menu-item-icon-active'  :'menu-item-icon-inactive'">help</span>
                   <span class="menu-item-text" :class="sidebarToggle ? 'lg:hidden' : ''">
                     المساعدة والدعم </span>
                 </a>
               </li>
               <li>
-                <a href="profile.html" @click="selected = (selected === 'Profile' ? '':'Profile')"
+                <a href="tutorials.html" @click="selected = (selected === 'Tutorials' ? '':'Tutorials')"
                   class="menu-item group"
-                  :class=" (selected === 'Profile') && (page === 'profile') ? 'menu-item-active' : 'menu-item-inactive'">
+                  :class=" (selected === 'Tutorials') && (page === 'tutorials') ? 'menu-item-active' : 'menu-item-inactive'">
 
-                  <span class="icon-[mdi--cast-tutorial] size-6"></span>
+                  <span class="material-symbols-outlined size-6"
+                  :class="(selected === 'Tutorials') && (page === 'tutorials') ?  'menu-item-icon-active'  :'menu-item-icon-inactive'">school</span>
                   <span class="menu-item-text" :class="sidebarToggle ? 'lg:hidden' : ''">
                     شروحات المنصة
                   </span>
@@ -316,17 +312,12 @@
               </li>
 
 
-
-
             </ul>
           </div>
           <div>
             <h3 class="mb-4 text-xs uppercase leading-[20px] text-gray-400">
               <span class="menu-group-title" :class="sidebarToggle ? 'lg:hidden' : ''">
                 إعدادات
-
-
-
               </span>
 
               <svg :class="sidebarToggle ? 'lg:block hidden' : 'hidden'" class="mx-auto fill-current menu-group-icon"
@@ -340,11 +331,12 @@
             <ul class="flex flex-col gap-4 mb-6">
 
               <li>
-                <a href="profile.html" @click="selected = (selected === 'Profile' ? '':'Profile')"
+                <a href="pricing.html" @click="selected = (selected === 'Subscription' ? '':'Subscription')"
                   class="menu-item group"
-                  :class=" (selected === 'Profile') && (page === 'profile') ? 'menu-item-active' : 'menu-item-inactive'">
+                  :class=" (selected === 'Subscription') && (page === 'pricing') ? 'menu-item-active' : 'menu-item-inactive'">
 
-                  <span class="icon-[fluent-mdl2--subscribe] size-6"></span>
+                  <span class="material-symbols-outlined size-6"
+                  :class="(selected === 'Subscription') && (page === 'pricing') ?  'menu-item-icon-active'  :'menu-item-icon-inactive'">card_membership</span>
                   <span class="menu-item-text" :class="sidebarToggle ? 'lg:hidden' : ''">
                     الاشتراك
                   </span>
@@ -352,11 +344,12 @@
               </li>
 
               <li>
-                <a href="profile.html" @click="selected = (selected === 'Profile' ? '':'Profile')"
+                <a href="index.html" @click="selected = (selected === 'LogOut' ? '':'LogOut')"
                   class="menu-item group"
-                  :class=" (selected === 'Profile') && (page === 'profile') ? 'menu-item-active' : 'menu-item-inactive'">
+                  :class=" (selected === 'LogOut') ? 'menu-item-active' : 'menu-item-inactive'">
 
-                  <span class="icon-[hugeicons--logout-circle-02] size-6"></span>
+                  <span class="material-symbols-outlined size-6"
+                  :class="(selected === 'LogOut') ?  'menu-item-icon-active'  :'menu-item-icon-inactive'">logout</span>
                   <span class="menu-item-text" :class="sidebarToggle ? 'lg:hidden' : ''">
                     تسجيل الخروج
                   </span>
